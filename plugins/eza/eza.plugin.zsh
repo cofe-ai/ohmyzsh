@@ -9,9 +9,15 @@ typeset -a _EZA_TAIL
 function _configure_eza() {
   local _val
   # Get the head flags
-  if zstyle -T ':omz:plugins:eza' 'show-group'; then
-    _EZA_HEAD+=("g")
-  fi
+  zstyle -s ':omz:plugins:eza' 'show-group' _val
+  case "${_val:l}" in
+    yes)
+      _EZA_HEAD+=("g")
+      ;;
+    smart)
+      _EZA_TAIL+=("--smart-group")
+      ;;
+  esac
   if zstyle -t ':omz:plugins:eza' 'header'; then
     _EZA_HEAD+=("h")
   fi
@@ -33,6 +39,14 @@ function _configure_eza() {
   fi
   if zstyle -t ':omz:plugins:eza' 'icons'; then
     _EZA_TAIL+=("--icons=auto")
+  fi
+  zstyle -s ':omz:plugins:eza' 'color-scale' _val
+  if [[ $_val ]]; then
+    _EZA_TAIL+=("--color-scale=$_val")
+  fi
+  zstyle -s ':omz:plugins:eza' 'color-scale-mode' _val
+  if [[ $_val == (gradient|fixed) ]]; then
+    _EZA_TAIL+=("--color-scale-mode=$_val")
   fi
   zstyle -s ':omz:plugins:eza' 'time-style' _val
   if [[ $_val ]]; then

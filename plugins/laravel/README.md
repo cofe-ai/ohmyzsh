@@ -10,6 +10,7 @@ plugins=(... laravel)
 |:-:|:-:|
 | `artisan`  | `php artisan`  |
 | `pas`  | `php artisan serve` |
+| `pad`  | `php artisan dev` |
 | `pats`  | `php artisan test` |
 
 ## Database
@@ -21,6 +22,7 @@ plugins=(... laravel)
 | `pamfs`  |  `php artisan migrate:fresh --seed` |
 | `pamr`  |  `php artisan migrate:rollback` |
 | `pads`  |  `php artisan db:seed` |
+| `padw`  |  `php artisan db:wipe` |
 
 ## Makers
 
@@ -49,6 +51,7 @@ plugins=(... laravel)
 | `pacoc`  |  `php artisan config:clear` |
 | `pavic`  |  `php artisan view:clear` |
 | `paroc`  |  `php artisan route:clear` |
+| `paopc`  |  `php artisan optimize:clear` |
 
 ## Queues
 
